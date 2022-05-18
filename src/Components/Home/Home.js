@@ -12,7 +12,6 @@ export default function Home() {
         promise.then(resposta => {
             setMovie(resposta.data);
         });
-        //console.log(movie)
     }, []);
     return (
         <>

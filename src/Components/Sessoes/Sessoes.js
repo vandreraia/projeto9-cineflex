@@ -12,9 +12,8 @@ export default function Sessoes() {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idSessao}/showtimes`);
         promise.then((res) => {
             setSessao(res.data);
-            console.log(sessao)
         });
-    }, []);
+    }, [idSessao]);
 
     return (
         <>
@@ -26,8 +25,8 @@ export default function Sessoes() {
                             <div>
                                 {
                                     day.showtimes.map((showtime, index) =>
-                                        <Link to={`/assentos/${showtime.id}`}>
-                                            <button key={index}>
+                                        <Link to={`/assentos/${showtime.id}`} key={index}>
+                                            <button>
                                                 {showtime.name}
                                             </button>
                                         </Link>

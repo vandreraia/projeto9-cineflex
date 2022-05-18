@@ -10,8 +10,10 @@ export default function Header() {
         info = "Selecione o filme";
     } else if (currentPage.slice(1, 9) === "assentos") {
         info = "Selecione o(s) assento(s)";
+    } else if (currentPage.slice(1, 8) === "sucesso") {
+        info = "Pedido feito com sucesso!";
     } 
-    
+
     return (
         <>
             <header>

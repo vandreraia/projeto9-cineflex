@@ -1,0 +1,33 @@
+.disponivel {
+    background-color: #C3CFD9;
+}
+
+.indisponivel {
+    background-color: #FBE192;
+}
+
+.selecionado {
+    background-color: #8DD7CF;
+}
+
+.circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50px;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.info-inside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
