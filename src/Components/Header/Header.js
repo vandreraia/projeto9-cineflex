@@ -8,9 +8,10 @@ export default function Header() {
         info = "Selecione o horário"
     } else if (currentPage === "\\") {
         info = "Selecione o filme";
-    } else if (currentPage === "\\") {
-        info = "Selecione o filme";
+    } else if (currentPage.slice(1, 9) === "assentos") {
+        info = "Selecione o(s) assento(s)";
     } 
+    
     return (
         <>
             <header>
