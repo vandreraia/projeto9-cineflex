@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
-export default function Sessoes() {
+export default function Sessoes({setMovie}) {
 
     const { idSessao } = useParams();
     const [sessao, setSessao] = useState();
@@ -14,7 +15,7 @@ export default function Sessoes() {
             setSessao(res.data);
         });
     }, [idSessao]);
-
+    setMovie(sessao);
     return (
         <>
             {
@@ -26,9 +27,9 @@ export default function Sessoes() {
                                 {
                                     day.showtimes.map((showtime, index) =>
                                         <Link to={`/assentos/${showtime.id}`} key={index}>
-                                            <button>
+                                            <Botao>
                                                 {showtime.name}
-                                            </button>
+                                            </Botao>
                                         </Link>
                                     )
                                 }
@@ -40,3 +41,12 @@ export default function Sessoes() {
         </>
     )
 }
+
+const Botao = styled.button`
+    background-color: #E8833A;
+    border-width: 0;
+    border-radius: 3px;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 20px 10px 10px 0px;
+`;
