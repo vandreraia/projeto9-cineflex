@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function Assentos({setSessao}) {
+export default function Assentos({ setSessao, setNome, setCpf, nome, cpf }) {
     const { idAssento } = useParams();
     const [assento, setAssento] = useState();
     const [clicked, setClicked] = useState(false);
@@ -16,7 +16,7 @@ export default function Assentos({setSessao}) {
             setAssento(res.data);
         });
     }, [idAssento]);
-    console.log(assento)
+    console.log(nome, cpf)
     setSessao(assento)
 
     return (
@@ -43,18 +43,32 @@ export default function Assentos({setSessao}) {
                     Indisponível
                 </InfoInside>
             </Info>
-            <p>Nome do comprador:</p>
-            <input placeholder="Digite seu nome..."></input>
-            <p>CPF do comprador:</p>
-            <input placeholder="Digite seu CPF..."></input>
-            <br></br>
-            <Link to={`/sucesso/`}>
-                <Botao onClick={() => setAll()}>Reservar assento(s)</Botao>
-            </Link>
+            <form onSubmit={setAll}>
+                <label for="nome">Nome do comprador:</label>
+                <br></br>
+                <input value={nome} onChange={e => setNome(e.target.value)} id="nome" placeholder="Digite seu nome..."></input>
+                <br></br>
+                <label for="CPF">CPF do comprador:</label>
+                <br></br>
+                <input value={cpf} onChange={e => setCpf(e.target.value)} id="CPF" placeholder="Digite seu CPF..."></input>
+                <br></br>
+                <Link to={`/sucesso/`}>
+                    <Botao type="submit">Reservar assento(s)</Botao>
+                </Link>
+            </form>
         </>
     )
-    
-    function setAll() {
+
+    function setAll(event) {
+
+        event.preventDefault();
+
+        const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", 
+        {
+            ids: [1, 2, 3],
+            nome,
+            cpf
+        });
 
     }
 }
@@ -105,7 +119,7 @@ const InfoInside = styled.div`
     flex-direction: column;
 `
 
-const Circle  = styled.div`
+const Circle = styled.div`
     width: 26px;
     height: 26px;
     border-radius: 50px;

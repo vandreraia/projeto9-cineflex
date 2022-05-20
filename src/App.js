@@ -11,6 +11,8 @@ import styled from 'styled-components';
 export default function App() {
     const [movie, setMovie] = useState();
     const [sessao, setSessao] = useState();
+    const [nome, setNome] = useState();
+    const [cpf, setCpf] = useState();
 
     console.log(movie)
     return (
@@ -20,13 +22,24 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/sessoes/:idSessao" element={<Sessoes setMovie={setMovie} />} />
-                    <Route path="/assentos/:idAssento" element={<Assentos setSessao={setSessao} />} />
+                    <Route path="/assentos/:idAssento"
+                        element={
+                            <Assentos
+                                setSessao={setSessao}
+                                setNome={setNome}
+                                setCpf={setCpf}
+                                nome={nome}
+                                cpf={cpf}
+                            />}
+                    />
                     <Route path="/sucesso/"
                         element={
                             <Sucesso
                                 title={movie ? movie.title : ""}
                                 day={sessao ? sessao.day.date : ""}
                                 hora={sessao ? sessao.name : ""}
+                                nome={nome}
+                                cpf={cpf}
                             />
                         }
                     />
