@@ -13,6 +13,7 @@ export default function App() {
     const [sessao, setSessao] = useState();
     const [nome, setNome] = useState();
     const [cpf, setCpf] = useState();
+    const [Nassento, setNAssento] = useState([]);
 
     console.log(movie)
     return (
@@ -30,6 +31,8 @@ export default function App() {
                                 setCpf={setCpf}
                                 nome={nome}
                                 cpf={cpf}
+                                Nassento={Nassento}
+                                setNAssento={setNAssento}
                             />}
                     />
                     <Route path="/sucesso/"
@@ -40,6 +43,9 @@ export default function App() {
                                 hora={sessao ? sessao.name : ""}
                                 nome={nome}
                                 cpf={cpf}
+                                Nassento={Nassento}
+                                setNAssento={setNAssento}
+                                setMovie={setMovie}
                             />
                         }
                     />

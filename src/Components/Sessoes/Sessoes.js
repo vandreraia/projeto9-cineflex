@@ -36,8 +36,11 @@ export default function Sessoes({setMovie}) {
                             </div>
                         </div>
                     )
-                    : "Loading..."
+                    : 
+                    <iframe src="https://giphy.com/embed/gYWeVOiMmbg3kzCTq5" title="pac-loading" width="480" height="480" frameBorder="0" allowFullScreen></iframe>
+
             }
+            
         </>
     )
 }

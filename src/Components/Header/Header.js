@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 export default function Header() {
     let currentPage = window.location.pathname;
@@ -12,13 +13,15 @@ export default function Header() {
         info = "Selecione o(s) assento(s)";
     } else if (currentPage === "sucesso/") {
         info = "Pedido feito com sucesso!";
-    } 
+    }
 
     return (
         <>
-            <Logo>
-                CINEFLEX
-            </Logo>
+            <Link to={`/`}>
+                <Logo>
+                    CINEFLEX
+                </Logo>
+            </Link>
             <Topo>
                 {info}
             </Topo>
@@ -26,7 +29,7 @@ export default function Header() {
     )
 }
 
-const Logo = styled.div `
+const Logo = styled.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -51,7 +54,7 @@ const Logo = styled.div `
 
 const Topo = styled.div`
     height: 110px;
-
+    margin-top: 70px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;

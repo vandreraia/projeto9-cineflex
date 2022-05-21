@@ -25,7 +25,7 @@ export default function Home() {
                                 <Link to={`/sessoes/${movie.id}`}>
                                     <Img src={movie.posterURL} alt="poster" />
                                 </Link>
-                            </Image>) : "Loading..."
+                            </Image>) : <iframe src="https://giphy.com/embed/gYWeVOiMmbg3kzCTq5" title="pac-loading" width="480" height="480" frameBorder="0" allowFullScreen></iframe>
                     }
                 </Flex>
             </div>

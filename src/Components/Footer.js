@@ -1,14 +1,24 @@
 import styled from 'styled-components';
 
 export default function Footer({ title, posterURL, day, hora }) {
-    console.log(posterURL)
+    let currentPage = window.location.pathname;
+    let bool = false;
+    currentPage = currentPage.slice(1, 9);
+    if (currentPage === "sessoes/" || currentPage === "assentos") {
+        bool = true;
+    }
     return (
         <Container>
-            <ContainerImg>
-                <Img src={posterURL} />
-            </ContainerImg>
-                {title}<br></br>
-                {day} - {hora}
+            {bool ?
+                <>
+                    <ContainerImg>
+                        <Img src={posterURL} />
+                    </ContainerImg>
+                    {title}<br></br>
+                    {day} - {hora}
+                </>
+                : ""
+            }
         </Container>
     )
 }

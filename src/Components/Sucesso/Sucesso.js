@@ -1,26 +1,30 @@
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-export default function Sucesso({ title, day, hora, nome, cpf }) {
+export default function Sucesso({ setMovie, title, day, hora, nome, cpf, Nassento, setNAssento }) {
+
+    function reset() {
+        setNAssento([])
+        setMovie([])
+        
+    }
     return (
         <>
             <h3>Filme e sessão</h3>
             {title}<br></br>
             {day} {hora}
             <h3>Ingressos</h3>
-            Assento 15
-            <br></br>
-            Assento 16
+            {Nassento.map((assento, key) => <p key={key}>Assento {assento}</p>)}
             <h3>Comprador</h3>
             Nome: {nome}
             <br></br>
             CPF: {cpf}
             <br></br>
-            <Link to={`/`}>
-                <Flex>
-                    <Botao type="submit">Voltar pra Home</Botao>
-                </Flex>
-            </Link>
+            <Flex>
+                <Link to={`/`}>
+                    <Botao type="submit" onClick={reset}>Voltar pra Home</Botao>
+                </Link>
+            </Flex>
         </>
     )
 }
