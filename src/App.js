@@ -4,6 +4,7 @@ import Assentos from "./Components/Assentos/Assentos";
 import Sucesso from "./Components/Sucesso/Sucesso";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer";
+import Back from "./Components/Back";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import styled from 'styled-components';
@@ -15,11 +16,11 @@ export default function App() {
     const [cpf, setCpf] = useState();
     const [Nassento, setNAssento] = useState([]);
 
-    console.log(movie)
     return (
         <BrowserRouter>
             <Header />
             <Main>
+                <Back></Back>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/sessoes/:idSessao" element={<Sessoes setMovie={setMovie} />} />

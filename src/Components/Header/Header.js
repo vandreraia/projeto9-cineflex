@@ -1,20 +1,25 @@
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import {
+    Link,
+    useLocation
+} from "react-router-dom";
 
 export default function Header() {
-    let currentPage = window.location.pathname;
+    let location = useLocation().pathname;
     let info;
-    currentPage = currentPage.slice(1, 9);
-    if (currentPage === "sessoes/") {
+    // let history = useHistory();
+    // goBack()
+    location = location.slice(0, 9);
+    if (location === "/sessoes/") {
         info = "Selecione o horário"
-    } else if (currentPage === "\\") {
+    } else if (location === "/") {
         info = "Selecione o filme";
-    } else if (currentPage === "assentos") {
+    } else if (location === "/assentos") {
         info = "Selecione o(s) assento(s)";
-    } else if (currentPage === "sucesso/") {
+    } else if (location === "/sucesso/") {
         info = "Pedido feito com sucesso!";
     }
-
+    console.log(location)
     return (
         <>
             <Link to={`/`}>
@@ -22,13 +27,32 @@ export default function Header() {
                     CINEFLEX
                 </Logo>
             </Link>
+            <Hidden></Hidden>
+            {location !== "/" ?
+                <Link to={`/`}>
+                    <Button>back</Button>
+                </Link>
+                : ""}
             <Topo>
                 {info}
             </Topo>
+
         </>
     )
 }
 
+const Hidden = styled.div`
+height: 70px;
+`
+
+const Button = styled.button`
+border-radius: 30px;
+    background-color: #E8833A;
+    color: #ffffff;
+    border-width: 0;
+    padding: 5px 10px;
+
+`
 const Logo = styled.div`
     position: fixed;
     top: 0;
@@ -53,8 +77,7 @@ const Logo = styled.div`
 `
 
 const Topo = styled.div`
-    height: 110px;
-    margin-top: 70px;
+    margin: 20px 0 40px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -63,6 +86,4 @@ const Topo = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    letter-spacing: 0.04em;
 `

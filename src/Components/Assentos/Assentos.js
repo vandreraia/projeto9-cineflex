@@ -9,7 +9,7 @@ function MapAssentos({ name, isAvailable, id, setListaAssento, listaAssento, set
     const [clicked, setClicked] = useState(false);
 
     function addListaAssento(isAvailable) {
-        if (isAvailable === true) {
+        if (isAvailable === false) {
             alert("ocupado men");
             return;
         }
@@ -24,7 +24,7 @@ function MapAssentos({ name, isAvailable, id, setListaAssento, listaAssento, set
     }
 
     return (
-        <Assento color={isAvailable ? "indisponivel" : "disponivel"} click={clicked} onClick={() => addListaAssento(isAvailable)}>{name}</Assento>
+        <Assento color={isAvailable ? "disponivel" : "indisponivel"} click={clicked} onClick={() => addListaAssento(isAvailable)}>{name}</Assento>
     )
 }
 
